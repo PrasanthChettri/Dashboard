@@ -1,0 +1,35 @@
+<html>
+    <title>UWU</title>
+    <body >
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <center><h1>BABY_OUTCAST</h1></center>
+        {{ time_model.time.date }}<br>
+    <div id="clockbox"></div>
+    <script type="text/javascript">
+    function GetClock(){
+    var d=new Date();
+    var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+    if(nhour==0){ap=" AM";nhour=12;}
+    else if(nhour<12){ap=" AM";}
+    else if(nhour==12){ap=" PM";}
+    else if(nhour>12){ap=" PM";nhour-=12;}
+    if(nmin<=9) nmin="0"+nmin;
+    if(nsec<=9) nsec="0"+nsec;
+    var clocktext = nhour+":"+nmin+":"+nsec+ap+"";
+    document.getElementById('clockbox').innerHTML=clocktext;
+    }
+    GetClock();
+    setInterval(GetClock,1000);
+    </script>
+        Temperature in Celcius : {{ time_model.tmp_c }} <br>
+        Status : {{ time_model.status }}<br>
+        Humidiy : {{ time_model.humidity }} <br>
+    <br>
+    <h2>MAIL<h2><br>
+    <img src = "{{ time_model.icon_url }}"><br>
+    {% for mail in mails %}
+    {{ mail }}<br>
+    {% endfor %}
+    {{ mail }}
+    </body>
+</html>
