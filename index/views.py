@@ -32,5 +32,5 @@ class main_index(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['time_model'] = get_t()
-        context['mails'] = self.objM.snip() 
+        context['mails']   = self.objM.get_snipped_messages() 
         return context

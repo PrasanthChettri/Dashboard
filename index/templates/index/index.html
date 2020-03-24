@@ -1,9 +1,33 @@
+<!- Jinja loop.index does not work , indexing does not work , I think my jinja is autisitc ->
 <html>
+    <head>
+    <style>
+        .border {
+        border-style:solid;
+        border-color:#5DADE2;
+        border-width:5px;
+        padding:15px;
+        background-color:#ebf5fb;
+        }
+    </style>
     <title>UWU</title>
+    </head>
     <body >
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <center><h1>BABY_OUTCAST</h1></center>
-        {{ time_model.time.date }}<br>
+    <style>
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <p>
+    <div class="container">
+      <div class = "card bg-dark text-white" >
+        <div class="card-body"><center><h1>Baby_Outcast</h1></center></div>
+      </div>
+     </div>
+     </p>
+
+    <div style = "margin-left: 16px;" class="card bg-light">
+    <div class="card-body text-center">
+   <h2>{{ time_model.tmp_c }} &#176;C </h2> <br>
+    <img src = "{{ time_model.icon_url }}"><br>
     <div id="clockbox"></div>
     <script type="text/javascript">
     function GetClock(){
@@ -21,15 +45,38 @@
     GetClock();
     setInterval(GetClock,1000);
     </script>
-        Temperature in Celcius : {{ time_model.tmp_c }} <br>
+ 
+    {{ time_model.time.date }}<br>
         Status : {{ time_model.status }}<br>
         Humidiy : {{ time_model.humidity }} <br>
     <br>
-    <h2>MAIL<h2><br>
-    <img src = "{{ time_model.icon_url }}"><br>
-    {% for mail in mails %}
-    {{ mail }}<br>
-    {% endfor %}
-    {{ mail }}
+</div>
+</div>
+    </p>
+    <p>
+    <div class="container">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+      <div class="card">
+        <div class="card-header">NEW MAIL</div>
+            <p>
+        <div class="card-body">
+            {% for mail in mails %}
+                {% for info in mail %}
+                    {{ info }} <br>
+                {% endfor %}
+            {% endfor %}
+            <hr>
+        </div>
+    </div>
+        <div class= "card-footer">
+            <a href= "https://mail.google.com/mail/u/1/#inbox"> readmore </a>
+        </div> 
+    </div>
+    </p>
     </body>
 </html>
+
